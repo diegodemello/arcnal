@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/questoes")
+    @RequestMapping("/questions")
 public class QuestionController {
-    private QuestionService questionService;
+    private final QuestionService questionService;
+
+    public QuestionController(QuestionService questionService) {
+        this.questionService = questionService;
+    }
 
     @PostMapping
     public ResponseEntity<Question> createQuestion(@RequestBody Question question){
