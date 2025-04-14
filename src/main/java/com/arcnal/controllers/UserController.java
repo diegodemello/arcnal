@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,8 +24,13 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<User>> userById(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.findById(id));
+    @GetMapping
+    public ResponseEntity<List<User>> findUsers() {
+        return ResponseEntity.ok(userService.listUsers());
+    }
+
+    @DeleteMapping
+    public void deleteUser(Long id){
+        userService.delete(id);
     }
 }

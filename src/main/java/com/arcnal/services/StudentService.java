@@ -27,10 +27,6 @@ public class StudentService {
         studentResponseRepository.save(response);
     }
 
-    public List<StudentResponse> listResponse(User student){
-        return studentResponseRepository.findByStudent(student);
-    }
-
     public ResponseEntity<String> responseQuestion(Question question, String chosenAlternative) {
         if (question.getCorrectAlternative().equalsIgnoreCase(chosenAlternative)) {
             return ResponseEntity.ok("Alternativa correta");

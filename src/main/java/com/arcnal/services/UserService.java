@@ -4,6 +4,7 @@ import com.arcnal.entity.User;
 import com.arcnal.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,8 +19,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> findById(Long id){
-        return userRepository.findById(id);
+    public List<User> listUsers(){
+        return userRepository.findAll();
     }
 
     public void delete(Long id){
